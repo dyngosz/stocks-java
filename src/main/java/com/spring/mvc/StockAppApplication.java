@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableAutoConfiguration
 @ComponentScan({"com.spring.domain", "com.spring.service", "com.spring.web"})
 public class StockAppApplication {
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(StockAppApplication.class, args);
 	}
