@@ -11,6 +11,7 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.spring.domain.Stock;
 
 @Service
@@ -24,7 +25,7 @@ public class StockServiceImpl implements StockService{
 		return getStockDataFromJson(getJsonFromApi(stockID));
 	}
 
-	private Stock getStockDataFromJson(String json) throws ParseException {
+	private Stock getStockDataFromJson(String json) throws ParseException, JsonProcessingException, IOException {
 		parser.setJsonForParsing(json);
 		return parser.getStockData();
 	}

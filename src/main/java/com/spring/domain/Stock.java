@@ -1,14 +1,20 @@
 package com.spring.domain;
 
 import java.util.List;
+import java.util.Map;
 
 public class Stock {
 	private String symbol;
 	private String information;
 	private String lastRefreshed;
-	private String stockVolume;
-	private String stockDate;
-	private List<String> stockValues;
+	private Map<String, Map<String, Double>> stockValuesMap;
+	
+	public Map<String, Map<String, Double>> getStockValuesMap() {
+		return stockValuesMap;
+	}
+	public void setStockValuesMap(Map<String, Map<String, Double>> stockValuesMap) {
+		this.stockValuesMap = stockValuesMap;
+	}
 	public String getSymbol() {
 		return symbol;
 	}
@@ -26,23 +32,5 @@ public class Stock {
 	}
 	public void setLastRefreshed(String lastRefreshed) {
 		this.lastRefreshed = lastRefreshed;
-	}
-	public List<String> getStockValues() {
-		return stockValues;
-	}
-	public void setStockValues(List<String> stockValues) {
-		this.stockValues = stockValues;
-	}
-	public String getStockVolume() {
-		return stockVolume;
-	}
-	public void setStockVolume(String stockVolume) {
-		this.stockVolume = stockVolume;
-	}
-	public String getStockDate() {
-		return stockDate;
-	}
-	public void setStockDate(String stockDate) {
-		this.stockDate = stockDate;
 	}
 }
