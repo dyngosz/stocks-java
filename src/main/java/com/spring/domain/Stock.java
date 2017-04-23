@@ -1,6 +1,5 @@
 package com.spring.domain;
 
-import java.util.List;
 import java.util.Map;
 
 public class Stock {
