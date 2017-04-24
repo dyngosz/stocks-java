@@ -25,7 +25,7 @@ public class StockController {
 	}
 	
 	@RequestMapping(params = {"stockID"}, method = RequestMethod.GET)
-	public Stock stockData(@RequestParam(value = "stockID") String stockID) throws IOException, ParseException, JSONException, org.json.simple.parser.ParseException{
+	public @ResponseBody Stock stockData(@RequestParam(value = "stockID") String stockID) throws IOException, ParseException, JSONException, org.json.simple.parser.ParseException{
 		return stockService.getStockData(stockID);
 	}
 }

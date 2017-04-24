@@ -19,7 +19,7 @@
 					$scope.getStockData($rootScope.stockID);
 				};
 
-				$scope.getStockData = function(city) {
+				$scope.getStockData = function(stockID) {
 
 					$http.get('/stock', {
 						params : {
@@ -28,7 +28,6 @@
 					}).then(function(response) {
 						$scope.showError = false;
 						$scope.stock = response.data;
-						console.log(response.data);
 						$scope.stockAvailable = true;
 					}, function(response) {
 						$scope.showError = true;
