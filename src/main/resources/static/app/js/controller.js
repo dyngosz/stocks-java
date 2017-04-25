@@ -20,7 +20,8 @@
 				};
 
 				$scope.getStockData = function(stockID) {
-
+					$scope.loading = true;
+					$scope.content = false;
 					$http.get('/stock', {
 						params : {
 							stockID : encodeURI(stockID)
@@ -31,11 +32,29 @@
 						$scope.stockAvailable = true;
 					}, function(response) {
 						$scope.showError = true;
-					})
+					}).finally(function() {
+					    // called no matter success or failure
+					    $scope.loading = false;
+						$scope.content = true;
+
+					  });
 				};
 
 				$scope.init();
 
+			} ]);
+
+	App.controller('NavBarController', [ '$scope', '$location', '$rootScope',
+			function($scope, $location, $rootScope) {
+
+				$scope.isActive = function(viewLocation) {
+					return viewLocation === $location.path();
+				};
+
+				$scope.getStockData = function(stockID) {
+					$rootScope.stockID = stockID;
+					$location.path('/stock/' + stockID)
+				};
 			} ]);
 
 })(window.angular);

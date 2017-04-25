@@ -38,7 +38,6 @@ public class StockServiceImpl implements StockService{
 		URLConnection urlConnection = url.openConnection();
 		BufferedReader in = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 		String inputLine;
-		System.out.println(url);
 		while ((inputLine = in.readLine()) != null)
 			stringBuilder.append(inputLine);
 		in.close();
