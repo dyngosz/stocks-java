@@ -13,3 +13,8 @@
     width: 100px; /* width of the spinner gif */
     height: 102px; /*hight of the spinner gif +2px to fix IE8 issue */
 }
+
+.panel {
+	margin-top: 100px; /* half height of the spinner gif */
+    top: 50%;
+}
