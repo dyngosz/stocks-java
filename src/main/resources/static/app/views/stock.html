@@ -26,6 +26,7 @@
 		<img src="https://www.yugma.com/images/loading-animation-7.gif" />
 	</div>
 
+
 	<!-- Page Content -->
 	<div class="container" ng-show="content">
 		<div class="panel">
@@ -39,20 +40,27 @@
 					<div class="col-md-2">
 						<h5>Stock symbol:</h5>
 					</div>
-					<div class="col-md-1"> {{stock.symbol}}</div>
+					<div class="col-md-1">{{stock.symbol}}</div>
 					<div class="col-md-9"></div>
 				</div>
 				<div class="row">
-					<div class="col-md-2"><h5>Last refreshed: </h5></div>
+					<div class="col-md-2">
+						<h5>Last refreshed:</h5>
+					</div>
 					<div class="col-md-3">{{stock.lastRefreshed}}</div>
+					<div class="col-md-8"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">
+						<h5>Last price:</h5>
+					</div>
+					<div class="col-md-3">{{stock.stockValues[0]}}</div>
 					<div class="col-md-8"></div>
 				</div>
 			</div>
 
-
 		</div>
 	</div>
-
 </body>
 
 </html>

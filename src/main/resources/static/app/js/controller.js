@@ -30,6 +30,10 @@
 						$scope.showError = false;
 						$scope.stock = response.data;
 						$scope.stockAvailable = true;
+						if ($scope.stock == undefined){   
+						    alert("What follows is blank: " + response.data);
+						}
+						
 					}, function(response) {
 						$scope.showError = true;
 					}).finally(function() {

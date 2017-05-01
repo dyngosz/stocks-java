@@ -1,9 +1,12 @@
 package com.spring.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -37,24 +40,6 @@ public class JsonStockDataParser {
 		stock.setInformation(String.valueOf(metaDataArray.get("1. Information")));
 		stock.setSymbol(String.valueOf(metaDataArray.get("2. Symbol")));
 		stock.setLastRefreshed(String.valueOf(metaDataArray.get("3. Last Refreshed")));
-		
-//		OLDER VERSION OF GETTING ONLY STOCK VALUES TABLE
-//		String JSON2 = mainJsonObj.toString();
-//		System.out.println(JSON2);
-//		final Gson gson = new Gson();
-//		final List<String> stockValues = gson.fromJson(JSON2, JsonElement.class)
-//		        .getAsJsonObject()
-//		        .get("Time Series (Daily)") // get the divisions property
-//		        .getAsJsonObject()
-//		        .entrySet() // and traverse its key/value pairs
-//		        .stream()
-//		        .map(Entry::getValue) // discarding the keys
-//		        .map(JsonElement::getAsJsonObject)
-//		        .map(jo -> jo.get("1. open")) // take the id property from the every `division` object
-//		        .map(JsonElement::getAsJsonPrimitive)
-//		        .map(JsonPrimitive::getAsString)
-//		        .collect(Collectors.toList());
-//		
 
 		//Create map of dates and stock values
 		Map<String, Map<String, Double>> map = new TreeMap<>(Collections.reverseOrder());
@@ -62,7 +47,7 @@ public class JsonStockDataParser {
 		JsonNode node = mapper.readTree(jsonForParsing);
 		JsonNode data = node.get("Time Series (Daily)");
 		
-
+		List<String> valuesList= new ArrayList<String>();
 		Iterator<String> iterator = data.fieldNames();
 		while (iterator.hasNext()) {
 			String date = iterator.next();
@@ -71,15 +56,23 @@ public class JsonStockDataParser {
 			Map<String, Double> priceMap = new HashMap<>();
 			Iterator<String> itr = value.fieldNames();
 			while (itr.hasNext()) {
-				String param = itr.next();
-				JsonNode price = value.get(param);
-
-				priceMap.put(param.replaceAll(" ", "").split("\\.")[1], price.asDouble());
+					String param = itr.next();
+					JsonNode price = value.get(param);
+					
+					if(param == "4. close")
+						valuesList.add(String.valueOf(price.asDouble()));
+						priceMap.put(param.replaceAll(" ", "").split("\\.")[1], price.asDouble());
 			}
 			map.put(date, priceMap);
 		}
 		stock.setStockValuesMap(map);
 		
+		String[] dates = map.keySet().toArray(new String[map.size()]);	
+		stock.setDates(dates); 
+		
+		String[] stockValues = valuesList.toArray(new String[map.size()]);
+		stock.setStockValues(stockValues);
+
 		return stock;
 	}
 

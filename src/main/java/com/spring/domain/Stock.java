@@ -1,13 +1,28 @@
 package com.spring.domain;
 
+import java.util.List;
 import java.util.Map;
 
 public class Stock {
 	private String symbol;
 	private String information;
 	private String lastRefreshed;
+	private String[] dates;
+	private String[] stockValues;
 	private Map<String, Map<String, Double>> stockValuesMap;
 	
+	public String[] getDates() {
+		return dates;
+	}
+	public void setDates(String[] dates) {
+		this.dates = dates;
+	}
+	public String[] getStockValues() {
+		return stockValues;
+	}
+	public void setStockValues(String[] stockValues) {
+		this.stockValues = stockValues;
+	}
 	public Map<String, Map<String, Double>> getStockValuesMap() {
 		return stockValuesMap;
 	}
