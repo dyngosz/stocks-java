@@ -69,9 +69,11 @@ public class JsonStockDataParser {
 		
 		String[] dates = map.keySet().toArray(new String[map.size()]);	
 		stock.setDates(dates); 
+		System.out.println(Arrays.toString(dates));
 		
 		String[] stockValues = valuesList.toArray(new String[map.size()]);
 		stock.setStockValues(stockValues);
+		System.out.println(Arrays.toString(stockValues));
 
 		return stock;
 	}

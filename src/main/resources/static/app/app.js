@@ -2,7 +2,7 @@
 
     'use strict';
 
-    angular.module('App', ['ngRoute', 'ngResource'])
+    angular.module('App', ['ngRoute', 'ngResource','ng-fusioncharts'])
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider
                 .when('/stock', {

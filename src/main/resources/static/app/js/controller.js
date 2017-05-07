@@ -7,6 +7,21 @@
 	App.controller('StockController', [ '$scope', '$http', '$routeParams',
 			'$rootScope', function($scope, $http, $routeParams, $rootScope) {
 
+		$scope.dataSource = {
+//			    "chart": {
+//			      "caption": "Column Chart Built in Angular!",
+//			      "captionFontSize": "30",
+//			      // more chart properties - explained later
+//			    },
+//			    "data": [{
+//			        "label": "CornflowerBlue",
+//			        "value": "42"
+//			      }, //more chart data
+//			    ]
+			  };
+		
+		
+		
 				$scope.init = function() {
 					if ($rootScope.stockID !== undefined) {
 						$scope.getStockData($rootScope.stockID);
@@ -19,6 +34,8 @@
 					$scope.getStockData($rootScope.stockID);
 				};
 
+				
+				
 				$scope.getStockData = function(stockID) {
 					$scope.loading = true;
 					$scope.content = false;
@@ -30,9 +47,6 @@
 						$scope.showError = false;
 						$scope.stock = response.data;
 						$scope.stockAvailable = true;
-						if ($scope.stock == undefined){   
-						    alert("What follows is blank: " + response.data);
-						}
 						
 					}, function(response) {
 						$scope.showError = true;
@@ -40,7 +54,7 @@
 					    // called no matter success or failure
 					    $scope.loading = false;
 						$scope.content = true;
-
+						
 					  });
 				};
 
