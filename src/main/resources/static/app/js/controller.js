@@ -25,6 +25,7 @@
 				$scope.getStockData = function(stockID) {
 					$scope.loading = true;
 					$scope.content = false;
+					$scope.showNoStockMessage = false;
 					$http.get('/stock', {
 						params : {
 							stockID : encodeURI(stockID)
@@ -85,6 +86,9 @@
 					}).finally(function() {
 					    // called no matter success or failure
 					    $scope.loading = false;
+					    if($scope.content == false){
+					    	$scope.showNoStockMessage = true;
+					    }
 						
 					  });
 				};

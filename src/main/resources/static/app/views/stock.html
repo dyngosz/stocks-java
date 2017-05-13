@@ -28,7 +28,10 @@
 		<img src="https://www.yugma.com/images/loading-animation-7.gif" />
 	</div>
 	
-	
+	<div class="noStockMessage" id="noStockMessage" ng-show="showNoStockMessage">
+		<div class="alert alert-danger" role="alert">Oh snap!  Ain't no data.</div>
+	</div>
+
 	<!-- Page Content -->
 	<div class="container" ng-show="content">
 		<div class="panel">
@@ -61,10 +64,9 @@
 				</div>
 			</div>
 		</div>
-		
 		<div ng-controller="StockController" ng-show="content">
-			<fusioncharts width="100%" height="400" type="line"
-				dataFormat="json" dataSource="{{dataSource}}"> </fusioncharts>
+			<fusioncharts width="100%" height="400" type="line" dataFormat="json"
+				dataSource="{{dataSource}}"> </fusioncharts>
 		</div>
 	</div>
 </body>
