@@ -6,6 +6,12 @@
 
 	App.controller('StockController', [ '$scope', '$http', '$routeParams',
 			'$rootScope', function($scope, $http, $routeParams, $rootScope) {
+			
+				$rootScope.modalShown = false;
+				$scope.toggleModal = function() {
+					$rootScope.modalShown = !$rootScope.modalShown;
+				};
+				
 				$scope.dataSource ={};
 				$scope.chartData = [];
 
@@ -53,6 +59,7 @@
 							        "yAxisName": "Price in $",
 							        "lineThickness": "3",
 							        "paletteColors": "#0075c2",
+							        "labelDisplay": "rotate",
 							        "baseFontColor": "#333333",
 							        "baseFont": "Helvetica Neue,Arial",
 							        "captionFontSize": "14",
@@ -71,7 +78,8 @@
 							        "showXAxisLine": "1",
 							        "xAxisLineThickness": "1",
 							        "xAxisLineColor": "#999999",
-							        "showAlternateHGridColor": "0"
+							        "showAlternateHGridColor": "0",
+							        "rotateValues": "1"
 						        },
 						        data: [{
 				                    'label': " ",
@@ -99,7 +107,11 @@
 
 	App.controller('NavBarController', [ '$scope', '$location', '$rootScope',
 			function($scope, $location, $rootScope) {
-
+			
+				$scope.toggleModal = function() {
+					$rootScope.modalShown = !$rootScope.modalShown;
+				};
+			
 				$scope.isActive = function(viewLocation) {
 					return viewLocation === $location.path();
 				};
@@ -109,5 +121,5 @@
 					$location.path('/stock/' + stockID)
 				};
 			} ]);
-
+	
 })(window.angular);
