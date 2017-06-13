@@ -23,16 +23,27 @@
 
 </head>
 <body>
-
+	<div>
+		<modal-dialog show='modalShown' width='400px' height='60%'>
+		<p>Modal Content Goes here
+		<p>
+		<a class="ng-modal-close" ng-click='toggleModal()'>
+			<i class="fa fa-times" style="font-size: 1em;"></i></a>
+		</modal-dialog>
+	</div>
 	<div id="spinner" class="spinner" ng-show="loading">
 		<img src="https://www.yugma.com/images/loading-animation-7.gif" />
 	</div>
-	
-	<div class="noStockMessage" id="noStockMessage" ng-show="showNoStockMessage">
-		<div class="alert alert-danger" role="alert">Oh snap!  Ain't no data.</div>
-		
-		<button type="button" class="btn btn-info buttonError" onClick="window.location = '#'; window.location.reload(true);">Quick, go back!</button>
-		
+
+	<div class="noStockMessage" id="noStockMessage"
+		ng-show="showNoStockMessage">
+		<div class="alert alert-danger" role="alert">Oh snap! Ain't no
+			data.</div>
+
+		<button type="button" class="btn btn-info buttonError"
+			onClick="window.location = '#'; window.location.reload(true);">Quick,
+			go back!</button>
+
 	</div>
 
 	<!-- Page Content -->
